@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need access to the microphone so you can record audio messages.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We need photo access so you can pick your profile photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We need camera access so you can take your profile photo</string>
+	<key>GIDClientID</key>
+	<string>363652766090-v52pl9s2l1vjhrjpbobko70u4esb490h.apps.googleusercontent.com</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.363652766090-v52pl9s2l1vjhrjpbobko70u4esb490h</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>

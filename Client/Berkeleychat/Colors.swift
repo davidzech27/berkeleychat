@@ -6,3 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
+
+enum Colors {
+    static let background = Color.black
+    static let primary = Color.white
+}

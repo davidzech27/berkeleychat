@@ -1,0 +1,520 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6389C18F2C279CE900AFC002 /* ProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C18E2C279CE900AFC002 /* ProfilePhotoView.swift */; };
+		6389C1912C279CF200AFC002 /* MajorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1902C279CF200AFC002 /* MajorView.swift */; };
+		6389C1932C279CFC00AFC002 /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1922C279CFC00AFC002 /* CoursesView.swift */; };
+		6389C1952C279D0200AFC002 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1942C279D0200AFC002 /* IntroView.swift */; };
+		6389C1972C279D0C00AFC002 /* CompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1962C279D0C00AFC002 /* CompleteView.swift */; };
+		6389C1992C279FC300AFC002 /* FadingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1982C279FC300AFC002 /* FadingText.swift */; };
+		6389C19D2C27B0A400AFC002 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C19C2C27B0A400AFC002 /* RoundedButton.swift */; };
+		6389C1A52C27C6BE00AFC002 /* GRPCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C19E2C27C6BE00AFC002 /* GRPCModel.swift */; };
+		6389C1A62C27C6BE00AFC002 /* LandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C19F2C27C6BE00AFC002 /* LandingModel.swift */; };
+		6389C1A72C27C6BE00AFC002 /* berkeleychat.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1A02C27C6BE00AFC002 /* berkeleychat.grpc.swift */; };
+		6389C1A82C27C6BE00AFC002 /* berkeleychat.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1A12C27C6BE00AFC002 /* berkeleychat.pb.swift */; };
+		6389C1A92C27C6BE00AFC002 /* berkeleychat.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1A32C27C6BE00AFC002 /* berkeleychat.grpc.swift */; };
+		6389C1AA2C27C6BE00AFC002 /* berkeleychat.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1A42C27C6BE00AFC002 /* berkeleychat.pb.swift */; };
+		6389C1AC2C280D7D00AFC002 /* CourseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1AB2C280D7D00AFC002 /* CourseArray.swift */; };
+		63AF20DB2C27491F0050CF79 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 63AF20DA2C27491F0050CF79 /* GRPC */; };
+		63AF20E32C274D7A0050CF79 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 63AF20E22C274D7A0050CF79 /* GoogleSignIn */; };
+		63AF20E52C274D7A0050CF79 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63AF20E42C274D7A0050CF79 /* GoogleSignInSwift */; };
+		63AF20EB2C2759A40050CF79 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF20EA2C2759A40050CF79 /* AuthModel.swift */; };
+		63AF20EF2C277AF30050CF79 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF20EE2C277AF30050CF79 /* Model.swift */; };
+		63AF20F12C277B2D0050CF79 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF20F02C277B2D0050CF79 /* UserModel.swift */; };
+		63AF20F42C277DC60050CF79 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF20F32C277DC60050CF79 /* LoadingView.swift */; };
+		63AF20F62C277DD70050CF79 /* GoogleSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF20F52C277DD70050CF79 /* GoogleSignInView.swift */; };
+		63AF20F82C277F230050CF79 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AF20F72C277F230050CF79 /* Colors.swift */; };
+		63EB746E2C2740E80080DCC7 /* BerkeleychatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EB746D2C2740E80080DCC7 /* BerkeleychatApp.swift */; };
+		63EB74702C2740E80080DCC7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EB746F2C2740E80080DCC7 /* ContentView.swift */; };
+		63EB74722C2740E90080DCC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EB74712C2740E90080DCC7 /* Assets.xcassets */; };
+		63EB74752C2740E90080DCC7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EB74742C2740E90080DCC7 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6389C18E2C279CE900AFC002 /* ProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoView.swift; sourceTree = "<group>"; };
+		6389C1902C279CF200AFC002 /* MajorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MajorView.swift; sourceTree = "<group>"; };
+		6389C1922C279CFC00AFC002 /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
+		6389C1942C279D0200AFC002 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		6389C1962C279D0C00AFC002 /* CompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteView.swift; sourceTree = "<group>"; };
+		6389C1982C279FC300AFC002 /* FadingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingText.swift; sourceTree = "<group>"; };
+		6389C19C2C27B0A400AFC002 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundedButton.swift; path = Berkeleychat/Views/RoundedButton.swift; sourceTree = "<group>"; };
+		6389C19E2C27C6BE00AFC002 /* GRPCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GRPCModel.swift; path = Berkeleychat/Models/GRPCModel.swift; sourceTree = "<group>"; };
+		6389C19F2C27C6BE00AFC002 /* LandingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingModel.swift; path = Berkeleychat/Models/LandingModel.swift; sourceTree = "<group>"; };
+		6389C1A02C27C6BE00AFC002 /* berkeleychat.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = berkeleychat.grpc.swift; sourceTree = "<group>"; };
+		6389C1A12C27C6BE00AFC002 /* berkeleychat.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = berkeleychat.pb.swift; sourceTree = "<group>"; };
+		6389C1A32C27C6BE00AFC002 /* berkeleychat.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = berkeleychat.grpc.swift; path = Berkeleychat/GRPCGenerated/berkeleychat.grpc.swift; sourceTree = "<group>"; };
+		6389C1A42C27C6BE00AFC002 /* berkeleychat.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = berkeleychat.pb.swift; path = Berkeleychat/GRPCGenerated/berkeleychat.pb.swift; sourceTree = "<group>"; };
+		6389C1AB2C280D7D00AFC002 /* CourseArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseArray.swift; path = Berkeleychat/Views/CourseArray.swift; sourceTree = "<group>"; };
+		63AF20E62C27525A0050CF79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63AF20EA2C2759A40050CF79 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		63AF20EE2C277AF30050CF79 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		63AF20F02C277B2D0050CF79 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		63AF20F32C277DC60050CF79 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		63AF20F52C277DD70050CF79 /* GoogleSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInView.swift; sourceTree = "<group>"; };
+		63AF20F72C277F230050CF79 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		63EB746A2C2740E80080DCC7 /* Berkeleychat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Berkeleychat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63EB746D2C2740E80080DCC7 /* BerkeleychatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerkeleychatApp.swift; sourceTree = "<group>"; };
+		63EB746F2C2740E80080DCC7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		63EB74712C2740E90080DCC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		63EB74742C2740E90080DCC7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		63EB74672C2740E80080DCC7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63AF20E52C274D7A0050CF79 /* GoogleSignInSwift in Frameworks */,
+				63AF20DB2C27491F0050CF79 /* GRPC in Frameworks */,
+				63AF20E32C274D7A0050CF79 /* GoogleSignIn in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6389C1A22C27C6BE00AFC002 /* GRPCGenerated */ = {
+			isa = PBXGroup;
+			children = (
+				6389C1A02C27C6BE00AFC002 /* berkeleychat.grpc.swift */,
+				6389C1A12C27C6BE00AFC002 /* berkeleychat.pb.swift */,
+			);
+			name = GRPCGenerated;
+			path = Berkeleychat/GRPCGenerated;
+			sourceTree = "<group>";
+		};
+		63AF20DE2C274AEC0050CF79 /* GRPCGenerated */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GRPCGenerated;
+			sourceTree = "<group>";
+		};
+		63AF20E92C2759910050CF79 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				63AF20EA2C2759A40050CF79 /* AuthModel.swift */,
+				63AF20EE2C277AF30050CF79 /* Model.swift */,
+				63AF20F02C277B2D0050CF79 /* UserModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		63AF20F22C277D9C0050CF79 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				63EB746F2C2740E80080DCC7 /* ContentView.swift */,
+				63AF20F32C277DC60050CF79 /* LoadingView.swift */,
+				63AF20F52C277DD70050CF79 /* GoogleSignInView.swift */,
+				6389C18E2C279CE900AFC002 /* ProfilePhotoView.swift */,
+				6389C1902C279CF200AFC002 /* MajorView.swift */,
+				6389C1982C279FC300AFC002 /* FadingText.swift */,
+				6389C1922C279CFC00AFC002 /* CoursesView.swift */,
+				6389C1942C279D0200AFC002 /* IntroView.swift */,
+				6389C1962C279D0C00AFC002 /* CompleteView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		63EB74612C2740E80080DCC7 = {
+			isa = PBXGroup;
+			children = (
+				6389C1AB2C280D7D00AFC002 /* CourseArray.swift */,
+				6389C1A32C27C6BE00AFC002 /* berkeleychat.grpc.swift */,
+				6389C1A42C27C6BE00AFC002 /* berkeleychat.pb.swift */,
+				6389C1A22C27C6BE00AFC002 /* GRPCGenerated */,
+				6389C19E2C27C6BE00AFC002 /* GRPCModel.swift */,
+				6389C19F2C27C6BE00AFC002 /* LandingModel.swift */,
+				6389C19C2C27B0A400AFC002 /* RoundedButton.swift */,
+				63EB746C2C2740E80080DCC7 /* Berkeleychat */,
+				63EB746B2C2740E80080DCC7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		63EB746B2C2740E80080DCC7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				63EB746A2C2740E80080DCC7 /* Berkeleychat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		63EB746C2C2740E80080DCC7 /* Berkeleychat */ = {
+			isa = PBXGroup;
+			children = (
+				63AF20F22C277D9C0050CF79 /* Views */,
+				63AF20E92C2759910050CF79 /* Models */,
+				63AF20E62C27525A0050CF79 /* Info.plist */,
+				63AF20DE2C274AEC0050CF79 /* GRPCGenerated */,
+				63EB746D2C2740E80080DCC7 /* BerkeleychatApp.swift */,
+				63EB74712C2740E90080DCC7 /* Assets.xcassets */,
+				63EB74732C2740E90080DCC7 /* Preview Content */,
+				63AF20F72C277F230050CF79 /* Colors.swift */,
+			);
+			path = Berkeleychat;
+			sourceTree = "<group>";
+		};
+		63EB74732C2740E90080DCC7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				63EB74742C2740E90080DCC7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		63EB74692C2740E80080DCC7 /* Berkeleychat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 63EB74782C2740E90080DCC7 /* Build configuration list for PBXNativeTarget "Berkeleychat" */;
+			buildPhases = (
+				63EB74662C2740E80080DCC7 /* Sources */,
+				63EB74672C2740E80080DCC7 /* Frameworks */,
+				63EB74682C2740E80080DCC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Berkeleychat;
+			packageProductDependencies = (
+				63AF20DA2C27491F0050CF79 /* GRPC */,
+				63AF20E22C274D7A0050CF79 /* GoogleSignIn */,
+				63AF20E42C274D7A0050CF79 /* GoogleSignInSwift */,
+			);
+			productName = Berkeleychat;
+			productReference = 63EB746A2C2740E80080DCC7 /* Berkeleychat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		63EB74622C2740E80080DCC7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					63EB74692C2740E80080DCC7 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = 63EB74652C2740E80080DCC7 /* Build configuration list for PBXProject "Berkeleychat" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 63EB74612C2740E80080DCC7;
+			packageReferences = (
+				63AF20D92C27491F0050CF79 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				63AF20E12C274D7A0050CF79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+			);
+			productRefGroup = 63EB746B2C2740E80080DCC7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				63EB74692C2740E80080DCC7 /* Berkeleychat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		63EB74682C2740E80080DCC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63EB74752C2740E90080DCC7 /* Preview Assets.xcassets in Resources */,
+				63EB74722C2740E90080DCC7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		63EB74662C2740E80080DCC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6389C1AC2C280D7D00AFC002 /* CourseArray.swift in Sources */,
+				63AF20EF2C277AF30050CF79 /* Model.swift in Sources */,
+				6389C1A72C27C6BE00AFC002 /* berkeleychat.grpc.swift in Sources */,
+				6389C1972C279D0C00AFC002 /* CompleteView.swift in Sources */,
+				6389C1A92C27C6BE00AFC002 /* berkeleychat.grpc.swift in Sources */,
+				6389C1952C279D0200AFC002 /* IntroView.swift in Sources */,
+				6389C19D2C27B0A400AFC002 /* RoundedButton.swift in Sources */,
+				6389C1992C279FC300AFC002 /* FadingText.swift in Sources */,
+				63AF20F82C277F230050CF79 /* Colors.swift in Sources */,
+				6389C1A62C27C6BE00AFC002 /* LandingModel.swift in Sources */,
+				63EB74702C2740E80080DCC7 /* ContentView.swift in Sources */,
+				6389C1A52C27C6BE00AFC002 /* GRPCModel.swift in Sources */,
+				63AF20F12C277B2D0050CF79 /* UserModel.swift in Sources */,
+				6389C18F2C279CE900AFC002 /* ProfilePhotoView.swift in Sources */,
+				63AF20F62C277DD70050CF79 /* GoogleSignInView.swift in Sources */,
+				6389C1932C279CFC00AFC002 /* CoursesView.swift in Sources */,
+				63EB746E2C2740E80080DCC7 /* BerkeleychatApp.swift in Sources */,
+				63AF20EB2C2759A40050CF79 /* AuthModel.swift in Sources */,
+				6389C1A82C27C6BE00AFC002 /* berkeleychat.pb.swift in Sources */,
+				6389C1912C279CF200AFC002 /* MajorView.swift in Sources */,
+				6389C1AA2C27C6BE00AFC002 /* berkeleychat.pb.swift in Sources */,
+				63AF20F42C277DC60050CF79 /* LoadingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		63EB74762C2740E90080DCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		63EB74772C2740E90080DCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		63EB74792C2740E90080DCC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Berkeleychat/Preview Content\"";
+				DEVELOPMENT_TEAM = 62S4DGDB9P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Berkeleychat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidzechowy.Berkeleychat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		63EB747A2C2740E90080DCC7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Berkeleychat/Preview Content\"";
+				DEVELOPMENT_TEAM = 62S4DGDB9P;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Berkeleychat/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidzechowy.Berkeleychat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63EB74652C2740E80080DCC7 /* Build configuration list for PBXProject "Berkeleychat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63EB74762C2740E90080DCC7 /* Debug */,
+				63EB74772C2740E90080DCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63EB74782C2740E90080DCC7 /* Build configuration list for PBXNativeTarget "Berkeleychat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63EB74792C2740E90080DCC7 /* Debug */,
+				63EB747A2C2740E90080DCC7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		63AF20D92C27491F0050CF79 /* XCRemoteSwiftPackageReference "grpc-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grpc/grpc-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.23.0;
+			};
+		};
+		63AF20E12C274D7A0050CF79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		63AF20DA2C27491F0050CF79 /* GRPC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63AF20D92C27491F0050CF79 /* XCRemoteSwiftPackageReference "grpc-swift" */;
+			productName = GRPC;
+		};
+		63AF20E22C274D7A0050CF79 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63AF20E12C274D7A0050CF79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		63AF20E42C274D7A0050CF79 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63AF20E12C274D7A0050CF79 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 63EB74622C2740E80080DCC7 /* Project object */;
+}
