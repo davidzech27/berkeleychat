@@ -20,8 +20,8 @@ struct FlipFromBottom: ViewModifier {
                 anchor: UnitPoint(x: 0.5, y: -0.5),
                 perspective: 1
             )
-            .opacity(isActive ? 0 : 1)
-            .blur(radius: isActive ? 128 : 0)
+            .opacity(isActive ? 0.5 : 1)
+            .blur(radius: isActive ? 64 : 0)
     }
 }
 

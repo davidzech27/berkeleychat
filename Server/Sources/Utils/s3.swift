@@ -32,9 +32,11 @@ class S3Uploader: @unchecked Sendable {
     }
 
     func download(fileURL: String) async throws -> Data {
+        let fileKey = String(fileURL.split(separator: "/").last!).removingPercentEncoding ?? String(fileURL.split(separator: "/").last!)
+
         let getObjectRequest = S3.GetObjectRequest(
             bucket: bucketName,
-            key: fileURL
+            key: fileKey
         )
 
         return try await s3.getObject(getObjectRequest).get().body!.asData()!

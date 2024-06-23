@@ -21,7 +21,7 @@ struct BerkeleychatApp: App {
                 .onAppear {
                     model.loadInitialData()
 
-                    // model.auth.signOut()
+//                     model.auth.signOut()
                 }
             }
             .environment(model)

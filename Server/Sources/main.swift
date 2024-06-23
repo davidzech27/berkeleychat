@@ -33,6 +33,46 @@ server.map {
     print("server started on port \(address!.port!)")
 }
 
+let channel = try GRPCChannelPool.with(
+    target: .host("localhost", port: 8080),
+    transportSecurity: .plaintext,
+    eventLoopGroup: group
+)
+
+let client = Berkeleychat_BerkeleychatAsyncClient(channel: channel)
+
+// manual user creation
+
+// _ = try await client.createAccount(Berkeleychat_CreateAccountRequest.with {
+//    $0.email = "ethankolasky@berkeley.edu"
+//    $0.name = "Ethan Kolasky"
+//    $0.profilePhotoURL = "https://berkeleychat.s3.us-west-1.amazonaws.com/Selfie%202024-06-23%20at%2008.50.49%20%281%29.png"
+//    $0.major = "Computer Science"
+//    $0.courses = ["EECS 16A"]
+//    $0.introURL = "https://berkeleychat.s3.us-west-1.amazonaws.com/UC%20Berkeley.m4a"
+// }
+// )
+
+// _ = try await client.createAccount(Berkeleychat_CreateAccountRequest.with {
+//    $0.email = "vedantgosavi@berkeley.edu"
+//    $0.name = "Vedant Gosavi"
+//    $0.profilePhotoURL = "https://berkeleychat.s3.us-west-1.amazonaws.com/Selfie%202024-06-23%20at%2008.50.51%20%281%29.png"
+//    $0.major = "Computer Science"
+//    $0.courses = []
+//    $0.introURL = "https://berkeleychat.s3.us-west-1.amazonaws.com/UC%20Berkeley%202.m4a"
+// }
+// )
+
+// _ = try await client.createAccount(Berkeleychat_CreateAccountRequest.with {
+//    $0.email = "ArnavChoudhury@berkeley.edu"
+//    $0.name = "Arnav Choudhury"
+//    $0.profilePhotoURL = "https://berkeleychat.s3.us-west-1.amazonaws.com/Selfie%202024-06-23%20at%2008.50.35%20%281%29.png"
+//    $0.major = "Computer Science"
+//    $0.courses = []
+//    $0.introURL = "https://berkeleychat.s3.us-west-1.amazonaws.com/UC%20Berkeley%203.m4a"
+// }
+// )
+
 _ = try await server.flatMap {
     $0.onClose
 }.get()

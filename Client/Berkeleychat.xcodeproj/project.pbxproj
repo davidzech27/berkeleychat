@@ -21,6 +21,7 @@
 		6389C1A92C27C6BE00AFC002 /* berkeleychat.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1A32C27C6BE00AFC002 /* berkeleychat.grpc.swift */; };
 		6389C1AA2C27C6BE00AFC002 /* berkeleychat.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1A42C27C6BE00AFC002 /* berkeleychat.pb.swift */; };
 		6389C1AC2C280D7D00AFC002 /* CourseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1AB2C280D7D00AFC002 /* CourseArray.swift */; };
+		6389C1AE2C2880A500AFC002 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6389C1AD2C2880A400AFC002 /* UsersView.swift */; };
 		63AF20DB2C27491F0050CF79 /* GRPC in Frameworks */ = {isa = PBXBuildFile; productRef = 63AF20DA2C27491F0050CF79 /* GRPC */; };
 		63AF20E32C274D7A0050CF79 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 63AF20E22C274D7A0050CF79 /* GoogleSignIn */; };
 		63AF20E52C274D7A0050CF79 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63AF20E42C274D7A0050CF79 /* GoogleSignInSwift */; };
@@ -51,6 +52,7 @@
 		6389C1A32C27C6BE00AFC002 /* berkeleychat.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = berkeleychat.grpc.swift; path = Berkeleychat/GRPCGenerated/berkeleychat.grpc.swift; sourceTree = "<group>"; };
 		6389C1A42C27C6BE00AFC002 /* berkeleychat.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = berkeleychat.pb.swift; path = Berkeleychat/GRPCGenerated/berkeleychat.pb.swift; sourceTree = "<group>"; };
 		6389C1AB2C280D7D00AFC002 /* CourseArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseArray.swift; path = Berkeleychat/Views/CourseArray.swift; sourceTree = "<group>"; };
+		6389C1AD2C2880A400AFC002 /* UsersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersView.swift; path = Views/UsersView.swift; sourceTree = "<group>"; };
 		63AF20E62C27525A0050CF79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63AF20EA2C2759A40050CF79 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		63AF20EE2C277AF30050CF79 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				63AF20F22C277D9C0050CF79 /* Views */,
 				63AF20E92C2759910050CF79 /* Models */,
 				63AF20E62C27525A0050CF79 /* Info.plist */,
+				6389C1AD2C2880A400AFC002 /* UsersView.swift */,
 				63AF20DE2C274AEC0050CF79 /* GRPCGenerated */,
 				63EB746D2C2740E80080DCC7 /* BerkeleychatApp.swift */,
 				63EB74712C2740E90080DCC7 /* Assets.xcassets */,
@@ -256,6 +259,7 @@
 				6389C19D2C27B0A400AFC002 /* RoundedButton.swift in Sources */,
 				6389C1992C279FC300AFC002 /* FadingText.swift in Sources */,
 				63AF20F82C277F230050CF79 /* Colors.swift in Sources */,
+				6389C1AE2C2880A500AFC002 /* UsersView.swift in Sources */,
 				6389C1A62C27C6BE00AFC002 /* LandingModel.swift in Sources */,
 				63EB74702C2740E80080DCC7 /* ContentView.swift in Sources */,
 				6389C1A52C27C6BE00AFC002 /* GRPCModel.swift in Sources */,

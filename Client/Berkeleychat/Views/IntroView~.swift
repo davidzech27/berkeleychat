@@ -29,9 +29,9 @@ struct IntroView: View {
     }
 
     private func stopRecording() {
-        Task {
-            intro = audioRecorder.stopRecording()
+        intro = audioRecorder.stopRecording()
 
+        Task {
             introUrl = try await model.grpc.uploadAudio(audio: intro!, accessToken: accessToken)
         }
     }
@@ -110,7 +110,7 @@ struct IntroView: View {
 }
 
 @Observable
-class AudioRecorder: ObservableObject {
+class AudioRecorder {
     var isRecording = false
     var recordingSeconds = 0
     private var audioRecorder: AVAudioRecorder?
@@ -122,19 +122,25 @@ class AudioRecorder: ObservableObject {
         do {
             try audioSession.setCategory(.playAndRecord, mode: .default)
             try audioSession.setActive(true)
+
             let documentsPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-            let audioFilename = documentsPath.appendingPathComponent("recording.m4a")
+            let audioFilename = documentsPath.appendingPathComponent("recording.mp3")
+
             let settings: [String: Any] = [
-                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVFormatIDKey: kAudioFormatMPEGLayer3,
                 AVSampleRateKey: 44100.0,
                 AVNumberOfChannelsKey: 2,
                 AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
+                AVEncoderBitRateKey: 128_000,
             ]
+
             audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
             audioRecorder?.record()
+
             recordingURL = audioFilename
             isRecording = true
             recordingSeconds = 0
+
             startTimer()
         } catch {
             print("Could not start recording: \(error.localizedDescription)")
@@ -145,6 +151,7 @@ class AudioRecorder: ObservableObject {
         audioRecorder?.stop()
         isRecording = false
         stopTimer()
+
         guard let url = recordingURL else { return nil }
         do {
             let data = try Data(contentsOf: url)
@@ -159,9 +166,7 @@ class AudioRecorder: ObservableObject {
 
     private func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.recordingSeconds += 1
-            }
+            self?.recordingSeconds += 1
         }
     }
 

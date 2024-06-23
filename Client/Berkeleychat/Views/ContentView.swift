@@ -31,8 +31,8 @@ struct ContentView: View {
                 CoursesView()
             case let .intro(accessToken, email, name, profilePhotoUrl, major, courses):
                 IntroView(accessToken: accessToken, email: email, name: name, profilePhotoUrl: profilePhotoUrl, major: major, courses: courses)
-            // case let .complete(accessToken, email, name, profilePhotoUrl, major, courses, intro):
-            //    CompleteView(email: email, name: name, profilePhotoUrl: profilePhotoUrl, major: major, courses: courses, intro: intro)
+            case let .complete(accessToken, email, name, profilePhotoUrl, major, courses, intro):
+                UsersView()
             default:
                 Text("Hello, world!")
             }

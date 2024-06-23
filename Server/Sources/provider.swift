@@ -150,7 +150,7 @@ final class BerkeleychatProvider: Berkeleychat_BerkeleychatAsyncProvider {
         let photo = request.photo
 
         let photoURL = try await s3.upload(data: photo, fileExtension: "jpg")
-
+        print("photoURL", photoURL)
         return Berkeleychat_UploadPhotoResponse.with {
             $0.photoURL = photoURL
         }
@@ -161,103 +161,109 @@ final class BerkeleychatProvider: Berkeleychat_BerkeleychatAsyncProvider {
         let audio = request.audio
 
         let audioURL = try await s3.upload(data: audio, fileExtension: "mp3")
-
+        print("audioURL", audioURL)
         return Berkeleychat_UploadAudioResponse.with {
             $0.audioURL = audioURL
         }
     }
 
     func createAccount(request: Berkeleychat_CreateAccountRequest, context _: GRPCAsyncServerCallContext) async throws -> Berkeleychat_CreateAccountResponse {
-        let email = request.email
-        let name = request.name
-        let profilePhotoURL = request.profilePhotoURL
-        let major = request.major
-        let courses = request.courses
-        let introURL = request.introURL
+        do {
+            let email = request.email
+            let name = request.name
+            let profilePhotoURL = request.profilePhotoURL
+            let major = request.major
+            let courses = request.courses
+            let introURL = request.introURL
+            print("profilePhotoURL", profilePhotoURL)
+            print("introURL", introURL)
+            async let asyncInitializeUser = redis.hmset([
+                "email": email,
+                "name": name,
+                "profilePhotoURL": profilePhotoURL,
+                "major": major,
+                "coursesString": courses.joined(separator: "|"),
+                "introURL": introURL,
+            ], in: "user.profile:\(email)").get()
+            // makeSymmetric
 
-        async let asyncInitializeUser = redis.hmset([
-            "email": email,
-            "name": name,
-            "profilePhotoURL": profilePhotoURL,
-            "major": major,
-            "coursesString": courses.joined(separator: "|"),
-            "introURL": introURL,
-        ], in: "user.profile:\(email)").get()
-        // makeSymmetric
+            async let asyncAddToMajor = redis.sadd(email, to: "major.emails:\(major)").get()
 
-        async let asyncAddToMajor = redis.sadd(email, to: "major.emails:\(major)").get()
+            async let asyncCourseOverlap = withThrowingTaskGroup(of: Void.self) { group in
+                let emailToQuantityOverlap = EmailToNumberMap()
 
-        async let asyncCourseOverlap = withThrowingTaskGroup(of: Void.self) { group in
-            let emailToQuantityOverlap = EmailToNumberMap()
+                for course in courses {
+                    group.addTask { [self] in
+                        async let asyncAddToCourse = redis.sadd(email, to: "course.emails:\(course)").get()
+                        async let asyncCourseEmails = redis.smembers(of: "course.emails:\(course)").get()
 
-            for course in courses {
-                group.addTask { [self] in
-                    async let asyncAddToCourse = redis.sadd(email, to: "course.emails:\(course)").get()
-                    async let asyncCourseEmails = redis.smembers(of: "course.emails:\(course)").get()
+                        _ = try await asyncAddToCourse
 
-                    _ = try await asyncAddToCourse
+                        let courseEmails = try await asyncCourseEmails
 
-                    let courseEmails = try await asyncCourseEmails
+                        for email in courseEmails {
+                            _ = await emailToQuantityOverlap.increment(email: email.string!)
+                        }
+                    }
+                }
 
-                    for email in courseEmails {
-                        _ = await emailToQuantityOverlap.increment(email: email.string!)
+                for otherEmail in await emailToQuantityOverlap.map.keys where otherEmail != email {
+                    group.addTask { [self] in
+                        _ = try await [redis.zadd(
+                            (element: otherEmail, score: Double(await emailToQuantityOverlap.map[otherEmail]!)), to: "user.course.overlap:\(email)"
+                        ).get(), redis.zadd(
+                            (element: email, score: Double(await emailToQuantityOverlap.map[otherEmail]!)), to: "user.course.overlap:\(otherEmail)"
+                        ).get()]
                     }
                 }
             }
 
-            for otherEmail in await emailToQuantityOverlap.map.keys where otherEmail != email {
-                group.addTask { [self] in
+            async let asyncIntroSimilarity = withThrowingTaskGroup(of: Void.self) { _ in
+
+                let intro = try await s3.download(fileURL: introURL)
+
+                let transcription = try await transcribeAudio(audioData: intro, httpClient: httpClient)
+                print("transcription", transcription)
+                let embedding = try await getEmbedding(text: transcription, httpClient: httpClient)
+
+                let dataData = embedding.withUnsafeBufferPointer {
+                    Data(buffer: $0)
+                }
+
+                try await redis.set("user.intro.embedding:\(email)", to: dataData).get()
+
+                let otherUserEmbeddingKeys = try (await redis.scan(startingFrom: 0, matching: "user.intro.embedding:*", count: 100).get()).1
+
+                for otherUserEmbeddingKey in otherUserEmbeddingKeys {
+                    let otherUserEmbeddingData = try await redis.get(RedisKey(otherUserEmbeddingKey)).get()
+
+                    let otherUserEmbedding = otherUserEmbeddingData.data!.withUnsafeBytes { otherUserEmbedding in
+                        Array(otherUserEmbedding.bindMemory(to: Float.self))
+                    }
+
+                    let dotProduct = dotProduct(embedding, otherUserEmbedding)
+
+                    let otherUserEmail = String(otherUserEmbeddingKey.split(separator: ":").last!)
+
                     _ = try await [redis.zadd(
-                        (element: otherEmail, score: Double(await emailToQuantityOverlap.map[otherEmail]!)), to: "user.course.overlap:\(email)"
+                        (element: otherUserEmail, score: dotProduct), to: "user.intro.similarity:\(email)"
                     ).get(), redis.zadd(
-                        (element: email, score: Double(await emailToQuantityOverlap.map[otherEmail]!)), to: "user.course.overlap:\(otherEmail)"
+                        (element: email, score: dotProduct), to: "user.intro.similarity:\(otherUserEmail)"
                     ).get()]
                 }
             }
+
+            // await all asyncs
+            try await asyncInitializeUser
+            _ = try await asyncAddToMajor
+            await asyncCourseOverlap
+            try await asyncIntroSimilarity
+
+            return Berkeleychat_CreateAccountResponse()
+        } catch {
+            print(error)
+            return Berkeleychat_CreateAccountResponse()
         }
-
-        async let asyncIntroSimilarity = withThrowingTaskGroup(of: Void.self) { _ in
-
-            let intro = try await s3.download(fileURL: introURL)
-
-            let transcription = try await transcribeAudio(audioData: intro, httpClient: httpClient)
-
-            let embedding = try await getEmbedding(text: transcription, httpClient: httpClient)
-
-            let dataData = embedding.withUnsafeBufferPointer {
-                Data(buffer: $0)
-            }
-
-            try await redis.set("user.intro.embedding:\(email)", to: dataData).get()
-
-            let otherUserEmbeddingKeys = try (await redis.scan(startingFrom: 0, matching: "user.intro.embedding:*", count: 100).get()).1
-
-            for otherUserEmbeddingKey in otherUserEmbeddingKeys {
-                let otherUserEmbeddingData = try await redis.get(RedisKey(otherUserEmbeddingKey)).get()
-
-                let otherUserEmbedding = otherUserEmbeddingData.data!.withUnsafeBytes { otherUserEmbedding in
-                    Array(otherUserEmbedding.bindMemory(to: Float.self))
-                }
-
-                let dotProduct = dotProduct(embedding, otherUserEmbedding)
-
-                let otherUserEmail = String(otherUserEmbeddingKey.split(separator: ":").last!)
-
-                _ = try await [redis.zadd(
-                    (element: otherUserEmail, score: dotProduct), to: "user.intro.similarity:\(email)"
-                ).get(), redis.zadd(
-                    (element: email, score: dotProduct), to: "user.intro.similarity:\(otherUserEmail)"
-                ).get()]
-            }
-        }
-
-        // await all asyncs
-        try await asyncInitializeUser
-        _ = try await asyncAddToMajor
-        await asyncCourseOverlap
-        try await asyncIntroSimilarity
-
-        return Berkeleychat_CreateAccountResponse()
     }
 
     func getUsers(request: Berkeleychat_GetUsersRequest, context _: GRPCAsyncServerCallContext) async throws -> Berkeleychat_GetUsersResponse {
@@ -274,7 +280,7 @@ final class BerkeleychatProvider: Berkeleychat_BerkeleychatAsyncProvider {
             (email: emailsOfCourseOverlapRaw[$0].string!, score: emailsOfCourseOverlapRaw[$0 + 1].int!)
         }
         let emailsOfIntroSimilarity = stride(from: 0, to: emailsOfIntroSimilarityRaw.count, by: 2).map {
-            (email: emailsOfIntroSimilarityRaw[$0].string!, score: emailsOfIntroSimilarityRaw[$0 + 1].int!)
+            (email: emailsOfIntroSimilarityRaw[$0].string!, score: Double(emailsOfIntroSimilarityRaw[$0 + 1].string!)!)
         }
         var emailToOverallScoreMap = [String: Int]()
         for email in emailsOfMajor {
@@ -289,6 +295,7 @@ final class BerkeleychatProvider: Berkeleychat_BerkeleychatAsyncProvider {
             }
         }
         for (email, score) in emailsOfIntroSimilarity {
+            print(email, score)
             let increment = NSDecimalNumber(decimal: pow(Decimal(score * 10), 3)).intValue
             if let score = emailToOverallScoreMap[email] {
                 emailToOverallScoreMap[email] = score + increment
@@ -297,13 +304,15 @@ final class BerkeleychatProvider: Berkeleychat_BerkeleychatAsyncProvider {
             }
         }
 
-        var profilesWithScores = [(email: String, name: String, major: String, courses: [String], intro: String, messages: [String], score: Int)]()
+        emailToOverallScoreMap[emailsOfIntroSimilarityRaw.first!.string!] = 1
+
+        var profilesWithScores = [(email: String, name: String, major: String, courses: [String], introURL: String, profilePhotoURL: String, messages: [String], score: Int)]()
 
         try await withThrowingTaskGroup(of: (String, [String: RESPValue], [String], Int).self) { group in
             for (email, score) in emailToOverallScoreMap {
                 group.addTask { [self] in
                     async let asyncValues = redis.hgetall(from: "user.profile:\(email)").get()
-                    async let asyncMessages = redis.lrange(from: "user.messages:\(email)", upToIndex: 100).get()
+                    async let asyncMessages = redis.smembers(of: "user.messages:\(email)").get()
 
                     let values = try await asyncValues
                     let messages = try await asyncMessages.compactMap { $0.string }
@@ -316,14 +325,17 @@ final class BerkeleychatProvider: Berkeleychat_BerkeleychatAsyncProvider {
                 let name = values["name"]?.string ?? ""
                 let major = values["major"]?.string ?? ""
                 let courses = values["courses"]?.string?.components(separatedBy: ",") ?? []
-                let intro = values["intro"]?.string ?? ""
+                let introURL = values["introURL"]?.string ?? ""
+                let profilePhotoURL = values["profilePhotoURL"]?.string ?? ""
 
-                profilesWithScores.append((email: email, name: name, major: major, courses: courses, intro: intro, messages: messages, score: score))
+                profilesWithScores.append((email: email, name: name, major: major, courses: courses, introURL: introURL, profilePhotoURL: profilePhotoURL, messages: messages, score: score))
             }
         }
 
         // Sort profiles by score in descending order
         profilesWithScores.sort { $0.score > $1.score }
+
+        print(profilesWithScores)
 
         // Create the response using the `with` method
         let response = Berkeleychat_GetUsersResponse.with {
@@ -333,7 +345,8 @@ final class BerkeleychatProvider: Berkeleychat_BerkeleychatAsyncProvider {
                     $0.name = profile.name
                     $0.major = profile.major
                     $0.courses = profile.courses
-                    $0.introURL = profile.intro
+                    $0.introURL = profile.introURL
+                    $0.profilePhotoURL = profile.profilePhotoURL
                     $0.messages = profile.messages
                 }
             }
